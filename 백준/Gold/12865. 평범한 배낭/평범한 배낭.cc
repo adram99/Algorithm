@@ -2,8 +2,8 @@
 using namespace std;
 
 int dp[101][100001];
-int w[101];
-int v[101];
+int w[101]; // 무게
+int v[101]; // 가치
 
 int main()
 {
