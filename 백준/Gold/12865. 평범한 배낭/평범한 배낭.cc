@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 
+int dp[101][100001];
+int w[101];
+int v[101];
+
 int main()
 {
-    int dp[101][100001];
-    int w[101];
-    int v[101];
-
     int n, k;
 
     cin >> n >> k;
