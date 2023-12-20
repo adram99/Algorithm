@@ -1,5 +1,7 @@
 #include <iostream>
 #pragma warning(disable:4996)
+using namespace std;
+
 const int station = 10;
 
 int main() {
