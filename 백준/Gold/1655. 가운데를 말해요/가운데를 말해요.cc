@@ -3,8 +3,8 @@
 
 using namespace std;
 
-priority_queue<int, vector<int>, less<int>> leftheap; // 왼쪽 최대 확인용 힙(중간값 포함)
-priority_queue<int, vector<int>, greater<int>> rightheap; // 오른쪽 최소 확인용 힙
+priority_queue<int, vector<int>, less<int>> leftheap; // 왼쪽 최대 확인용 힙(중간값 포함). top = 제일 큰 수
+priority_queue<int, vector<int>, greater<int>> rightheap; // 오른쪽 최소 확인용 힙. top = 제일 작은 수
 
 int main() {
     int count, num; // count : 숫자 개수, num : 숫자
