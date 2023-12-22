@@ -17,7 +17,7 @@ int main() {
 
     for (int i = 0; i < 9; i++) {
         for (int j = 1; j < 9; j++) {
-            if (sum - (dwarves[i] + dwarves[j]) == 100) {  // 임의의 두 난장이를 뺐을 때 100이면 조건 성립
+            if (sum - (dwarves[i] + dwarves[j]) == 100) {  // 전체 - 임의의 두 난쟁이 = 100 이면 조건 성립
                 faker1 = i;
                 faker2 = j;
                 i = 9;
