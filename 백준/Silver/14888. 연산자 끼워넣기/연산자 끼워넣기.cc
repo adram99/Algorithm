@@ -13,22 +13,22 @@ void backtracking(int now_res, int next_index) {
         res_min = min(res_min, now_res);
         return;
     }
-    if (oper[0] > 0) {
+    if (oper[0] > 0) {  // +를 선택
         oper[0]--;
         backtracking(now_res + num[next_index], next_index + 1);
         oper[0]++;
     }
-    if (oper[1] > 0) {
+    if (oper[1] > 0) {  // -를 선택
         oper[1]--;
         backtracking(now_res - num[next_index], next_index + 1);
         oper[1]++;
     }
-    if (oper[2] > 0) {
+    if (oper[2] > 0) {  // *를 선택
         oper[2]--;
         backtracking(now_res * num[next_index], next_index + 1);
         oper[2]++;
     }
-    if (oper[3] > 0) {
+    if (oper[3] > 0) {  // /를 선택
         oper[3]--;
         backtracking(now_res / num[next_index], next_index + 1);
         oper[3]++;
