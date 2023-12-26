@@ -18,7 +18,7 @@ void calculate() {
             res *= 3;
         }
         else if (str[i] == ')') {           // ')'는 계산값을 최종값에 더하고 임시값/2
-            if (bracket.empty() || bracket.top() != '(') { // 식이 잘못된 경우
+            if (bracket.empty() || bracket.top() != '(') { // 식이 잘못된 경우 (스택이 비었는지부터 확인해야함)
                 ans = 0;
                 break;
             }
