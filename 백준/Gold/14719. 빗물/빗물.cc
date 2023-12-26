@@ -15,16 +15,16 @@ int main() {
     }
 
     for (int i = 0; i < W; i++) {
-        if (i == 0 || i == W-1) continue;
+        if (i == 0 || i == W-1) continue;                 // 맨 처음과 맨 끝은 물이 차지 않음
 
         int side = i;
         left_max = 0;
-        for (side; side >= 0; side--) {            // 현재 블록 기준으로 왼편의 최대 블록
+        for (side; side >= 0; side--) {                   // 현재 블록 기준으로 왼편의 최대 블록
             left_max = max(block[side], left_max);
         }
 
         right_max = 0;
-        for (side = i; side < W; side++) {         // 현재 블록 기준으로 오른편의 최대 블록
+        for (side = i; side < W; side++) {                // 현재 블록 기준으로 오른편의 최대 블록
             right_max = max(block[side], right_max);
         }
 
