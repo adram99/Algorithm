@@ -14,9 +14,9 @@ void backtracking(int now_res, int next_index) {
         return;
     }
     if (oper[0] > 0) {                           // +를 선택
-        oper[0]--;
+        oper[0]--;                               // 연산자를 사용했기 때문에 개수 감소
         backtracking(now_res + num[next_index], next_index + 1);
-        oper[0]++;
+        oper[0]++;                               // 백트래킹 계산후 반환 받았기 때문에 다시 개수 증가(원래 상태)
     }
     if (oper[1] > 0) {                           // -를 선택
         oper[1]--;
