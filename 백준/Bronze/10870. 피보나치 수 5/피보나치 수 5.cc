@@ -8,7 +8,7 @@ int memo[20];
 int fibo(int n) {
     if (n == 0) return 0;
     if (n == 1) return 1;
-    if(memo[n] != 0) return memo[n];
+    if(memo[n] != 0) return memo[n];            // 현재 피보나치값이 저장되어 있을 땐 계산없이 저장된 값 불러옴
     return memo[n] = fibo(n - 2) + fibo(n - 1); // 피보나치 값을 저장
 }
 
