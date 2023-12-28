@@ -29,7 +29,7 @@ int main() {
         }
 
         if (min(right_max, left_max) - block[i] > 0) {    // 현재 블록 보다 높은 블록이 양쪽으로 있어야함
-            sum += (min(right_max, left_max) - block[i]); // 현재 블록 - 양옆 최대 블록 중 작은 블록
+            sum += (min(right_max, left_max) - block[i]); // 현재 블록 - (오른편 최대 블록과 왼편 최대 블록 중 작은 블록)
         }
     }
 
