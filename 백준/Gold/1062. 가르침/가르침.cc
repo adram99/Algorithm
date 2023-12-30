@@ -8,11 +8,11 @@ int abc[26] = { 0, }; // 알파벳 조합 체크용
 char word[50][16];    // 주어진 단어
 int max_words = 0;    // 읽어지는 단어의 최대 개수
 
-int readable(int N) {                           // 조합된 알파벳(체크된 abc[])로 읽을 수 있는 단어 확인
+int readable(int N) {                                // 조합된 알파벳(체크된 abc[])로 읽을 수 있는 단어 확인
     int count = 0;
     for (int i = 0; i < N; i++) {
         int check = 1;
-        for (int j = 4; j < strlen(word[i]); j++) {
+        for (int j = 4; j < strlen(word[i]); j++) {  // anta는 고정이므로 4부터(5번째) 체크
             if (abc[word[i][j] - 'a'] == 0) {
                 check = 0;
                 break;
