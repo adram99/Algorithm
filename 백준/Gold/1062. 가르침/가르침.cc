@@ -24,9 +24,9 @@ int readable(int N) {                                // 조합된 알파벳(체�
     return max_words;
 }
 
-int dfs(int choose, int index, int N, int K) {  // dfs로 알파벳 조합
+int dfs(int choose, int index, int N, int K) {       // dfs로 알파벳 조합
     if (choose >= K) {
-        return readable(N);
+        return readable(N);                          // K만큼 조합한 후 읽을수 있는 단어 있는지 체크
     }
     for (int i = index; i < 26; i++) {
         if (abc[i] == 0) {
