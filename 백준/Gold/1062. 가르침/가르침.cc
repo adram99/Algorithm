@@ -4,7 +4,7 @@
 #pragma warning (disable:4996)
 using namespace std;
 
-int abc[26] = { 0, }; // 알파벳 조합 체크용
+int abc[26] = { 0, }; // 읽을 수 있는 알파벳 체크용
 char word[50][16];    // 주어진 단어
 int max_words = 0;    // 읽어지는 단어의 최대 개수
 
@@ -18,7 +18,7 @@ int readable(int N) {                                // 조합된 알파벳(체�
                 break;
             }
         }
-        if (check == 1) count++;
+        if (check == 1) count++;                     // 단어 안에 알파벳이 전부 읽을 수 있으면 카운트
     }
     if (count > max_words) max_words = count;
     return max_words;
