@@ -14,18 +14,18 @@ int dijsktra(int start, int end) {
     pq.push({ start, 0 });              // 출발지와 비용 0
 
     while (!pq.empty()) {
-        int curCity = pq.top().first;   // 해당 도시
-        int curCost = pq.top().second;  // 해당 도시까지 드는 비용  
-        pq.pop();
-        if (curCost > dist[curCity]) continue;
-        for (int i = 0; i < graph[curCity].size(); i++) {
-            int nextCost = graph[curCity][i].second;
-            int next = graph[curCity][i].first;
+        int cur_city = pq.top().first;   // 해당 도시
+        int cur_cost = pq.top().second;  // 해당 도시까지 드는 비용  
+        pq.pop();                        // 큐에선 제거
+        if (cur_cost > dist[cur_city]) continue;             // 현재 저장된 최소비용보다 클 경우 패스
+        for (int i = 0; i < graph[cur_city].size(); i++) {   // 해당 도시와 연결된 다른 도시들과 비용 확인
+            int next_cost = graph[cur_city][i].second;
+            int next_city = graph[cur_city][i].first;
 
-            if (dist[next] <= curCost + nextCost) continue;
+            if (dist[next_city] <= cur_cost + next_cost) continue;  // 현재 도시를 거쳐 연결된 도시로 가는 비용이 더 크면 패스
 
-            dist[next] = curCost + nextCost;
-            pq.push({ dist[next], next });
+            dist[next_city] = cur_cost + next_cost; 
+            pq.push({ dist[next_city], next_city });
         }
     }
     return dist[end];
