@@ -24,8 +24,8 @@ int dijsktra(int start, int end) {
 
             if (dist[next_city] <= cur_cost + next_cost) continue;  // 현재 도시를 거쳐 연결된 도시로 가는 비용이 더 크면 패스
 
-            dist[next_city] = cur_cost + next_cost; 
-            pq.push({ dist[next_city], next_city });
+            dist[next_city] = cur_cost + next_cost;          // 지금 도시를 거쳐가는 비용이 더 작으면 업데이트
+            pq.push({ dist[next_city], next_city });         // 더 작은 비용이 들어간 정보로 큐 push
         }
     }
     return dist[end];
