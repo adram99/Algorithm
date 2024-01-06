@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     int N, K;
     int hole[100];                      // 구멍
-    int nearby[100];                    // 같은 용품을 다시 사용하기까지 기다리는 시간
+    int nearby[100];                    // 같은 용품을 다시 사용하기까지 기다리는 시간(구멍 기준)
     int use[100];                       // 사용할 용품
 
     scanf("%d %d", &N, &K);
@@ -41,16 +41,16 @@ int main() {
         
 
         for (int j = 0; j < N; j++) {   // 다음 사용이 없거나 가장 길게 기다려야하는 용품 확인
-            int next = 0;
+            int next = 0;               // 같은 용품의 다음 순서
             for (int k = i+1; k < K; k++) {
                 if (hole[j] == use[k]) break;
                 next++;
             }
             nearby[j] = next;
         }
-        int change = 0;
+        int change = 0;                 // 교체할 위치
         for (int j = 0; j < N; j++) {
-            if (nearby[change] < nearby[j]) change = j;
+            if (nearby[change] < nearby[j]) change = j;     // 더 나중에 사용할 용품이 교체 우선순위가 높음
         }
         hole[change] = use[i];
         count++;                     
