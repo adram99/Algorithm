@@ -1,6 +1,5 @@
-#include <iostream>
+#include <stdio.h>
 #pragma warning(disable:4996)
-using namespace std;
 
 int main() {
 
