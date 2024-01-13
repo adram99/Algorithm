@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    long long S;
+    long long S; // int 범위로는 커버 안됨
     cin >> S;
 
     long long sum = 0, num = 1;
