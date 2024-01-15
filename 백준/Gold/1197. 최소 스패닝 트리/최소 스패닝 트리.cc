@@ -18,15 +18,17 @@ void unionNodes(int x, int y) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
     int V, E;
-    scanf("%d %d", &V, &E);
-
+    cin >> V >> E;
     for (int i = 0; i <= V; i++) parent[i] = i;    // 아무것도 연결돼있지 않은 상태
 
     int a, b, c;
     vector<pair<int, pair<int, int>>> graph;
     for (int i = 0; i < E; i++) {
-        scanf("%d %d %d", &a, &b, &c);
+        cin >> a >> b >> c;
         graph.push_back({ c, {a, b} });
     }
     sort(graph.begin(), graph.end());              // 가중치를 기준으로 오름차순 정렬
@@ -43,7 +45,7 @@ int main() {
         }
     }
 
-    printf("%d", sum);
+    cout << sum;
 
     return 0;
 }
