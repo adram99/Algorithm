@@ -3,6 +3,9 @@ using namespace std;
 #pragma warning(disable:4996)
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
     int numcase, num, min, max;
     min = 1000000;
     max = -1000000;
@@ -20,6 +23,6 @@ int main() {
         numcase--;
     }
 
-    printf("%d %d", min, max);
+    cout << min << " " << max;
     return 0;
 }
