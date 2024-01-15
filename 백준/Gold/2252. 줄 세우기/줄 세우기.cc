@@ -1,40 +1,50 @@
 #include <iostream>
 #include <vector>
-
+#include <queue>
 using namespace std;
 
-vector<int> front[32002]; //앞에 있는 노드
-int visited[32002] = { false, }; //방문 여부
+#define MAX 32001
 
-void DFS(int node) {
-	visited[node] = true;
-	for (int i = 0; i < front[node].size(); i++) {
-		if(visited[front[node][i]] == false) // 앞에 있는 노드 중 방문되지 않은 노드
-			DFS(front[node][i]);
-	}
-	cout << node << " ";
+vector<int> graph[MAX];
+int indegree[MAX];
+int res[MAX];
+
+void lineUp(int n) {
+    queue<int> zero;
+
+    for (int i = 1; i <= n; i++) {
+        if (indegree[i] == 0) zero.push(i);
+    }
+    if (zero.empty()) return;
+    for (int i = 1; i <= n; i++) {
+        int zero_node = zero.front();
+        zero.pop();
+        res[i] = zero_node;
+
+        for (int i = 0; i < graph[zero_node].size(); i++) {
+            int node = graph[zero_node][i];
+            indegree[node]--;
+            if (indegree[node] == 0) zero.push(node);
+        }
+    }
+
 }
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+    int N, M;
+    cin >> N >> M;
 
-	int N, M;
-	cin >> N >> M;
+    int a, b;
+    for (int i = 0; i < M; i++) {
+        cin >> a >> b;
+        graph[a].push_back(b);
+        indegree[b]++;
+    }
+    lineUp(N);
 
-	for (int i = 0; i < M; i++) {
-		int A, B;
-		cin >> A >> B;
-		front[B].push_back(A);
-	}
+    for (int i = 1; i <= N; i++) {
+        cout << res[i] << " ";
+    }
 
-	for (int i = 1; i <= N; i++) {
-		if(visited[i] == false)
-			DFS(i);
-	}
-
-	cout << "\n";
-
-	return 0;
+    return 0;
 }
