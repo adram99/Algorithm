@@ -15,8 +15,8 @@ int main() {
             scanf("%d", &arr[i]);
         }
 
-        sort(arr, arr + 10);             // algorithm 헤더 sort함수(intro sort, O(n log⁡ n)). 기본은 오름차순 정렬
-        printf("%d\n", arr[7]);          // 3번째로 큰 수(전체 수가 10개일 때, 뒤에서 3번째)
+        sort(arr, arr + 10);             // algorithm 헤더 sort함수. 오름차순 정렬
+        printf("%d\n", arr[7]);          // 뒤에서 3번째로 큰 수(전체 수 10일 때)
 
         testcase--;
     }
