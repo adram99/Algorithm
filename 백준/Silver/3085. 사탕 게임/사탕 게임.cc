@@ -1,67 +1,104 @@
 #include <iostream>
-#include <algorithm>
-#define MAX 51
-
 using namespace std;
-int N, maxCandy = 0;
-char candy[MAX][MAX];
 
-void check();
+char board[51][51];
+int max_count = 0;
 
-int main(void) {
-    cin >> N;
-
-    for(int i = 0; i < N; i++) {
-        for(int j = 0; j < N; j++) {
-            cin >> candy[i][j];
-        }
-    }
-    
-    for(int i = 0; i < N; i++) {
-        for(int j = 0; j < N - 1; j++) {
-            swap(candy[i][j], candy[i][j + 1]);
-            check();
-            swap(candy[i][j], candy[i][j + 1]);
-        }
-    }
-
-    for(int j = 0; j < N; j++) {
-        for(int i = 0; i < N - 1; i++) {
-            swap(candy[i][j], candy[i + 1][j]);
-            check();
-            swap(candy[i][j], candy[i + 1][j]);
-        }
-    }
-
-    cout << maxCandy << '\n';
-
-    return 0;
+void change(int y1, int x1, int y2, int x2) {
+    int temp = board[y1][x1];
+    board[y1][x1] = board[y2][x2];
+    board[y2][x2] = temp;
 }
 
-void check() {
-    for(int i = 0; i < N; i++) {
-        int count = 1;
-        for(int j = 0; j < N; j++) {
-            if(candy[i][j] == candy[i][j + 1]) {
-                count++;
-            }
-            else {
-                if(maxCandy < count) maxCandy = count;
-                count = 1;
-            }
+void widthSearch(int boardY, int n) { 
+    int count = 1;
+    for (int i = 0; i < n; i++) {
+        if (board[boardY][i] == board[boardY][i + 1]) {
+            count++;
+        }
+        else {
+            if (max_count < count) max_count = count;
+            count = 1;
+        }
+    }
+}
+
+void heightSearch(int boardX, int n) {
+    int count = 1;
+    for (int i = 0; i < n; i++) {
+        if (board[i][boardX] == board[i + 1][boardX]) {
+            count++;
+        }
+        else {
+            if (max_count < count) max_count = count;
+            count = 1;
+        }
+    }
+}
+
+void firstMax(int n) {
+    for (int i = 0; i < n; i++) {
+        widthSearch(i, n);
+        heightSearch(i, n);
+    }
+}
+
+void afterChangeMax(char dir, int boardY, int boardX, int n) {
+    firstMax(n);
+    /*
+    if (dir == 'w') {
+        widthSearch(boardY, n);
+        heightSearch(boardX, n);
+        heightSearch(boardX + 1, n);
+    }
+    else if (dir == 'h') {
+        heightSearch(boardX, n);
+        widthSearch(boardY, n);
+        widthSearch(boardY + 1, n);
+    }*/
+}
+
+void changeAndCount(int n) { 
+    char temp, change_dir;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            change(i, j, i, j + 1);
+            change_dir = 'w';
+            afterChangeMax(change_dir, i, j, n);
+            change(i, j, i, j + 1);
+        }
+    }
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++) {
+            change(i, j, i + 1, j);
+            change_dir = 'h';
+            afterChangeMax(change_dir, i, j, n);
+            change(i, j, i + 1, j);
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int N;
+    cin >> N;
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cin >> board[i][j];
         }
     }
 
-    for(int j = 0; j < N; j++) {
-        int count = 1;
-        for(int i = 0; i < N; i++) {
-            if(candy[i][j] == candy[i + 1][j]) {
-                count++;
-            }
-            else {
-                if(maxCandy < count) maxCandy = count;
-                count = 1;
-            }
-        }
+    firstMax(N);
+    if (max_count == N) {
+        cout << N;
     }
+    else {
+        changeAndCount(N);
+        cout << max_count;
+    }
+
+    return 0;
 }
