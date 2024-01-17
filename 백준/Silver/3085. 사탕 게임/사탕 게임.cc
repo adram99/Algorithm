@@ -41,36 +41,22 @@ void firstMax(int n) {
     }
 }
 
-void afterChangeMax(char dir, int boardY, int boardX, int n) {
-    if (dir == 'w') {
-        /*widthSearch(boardY, n);
-        heightSearch(boardX, n);
-        heightSearch(boardX + 1, n);*/
-        firstMax(n);
-    }
-    else if (dir == 'h') {
-        /*heightSearch(boardX, n);
-        widthSearch(boardY, n);
-        widthSearch(boardY + 1, n);*/
-        firstMax(n);
-    }
-}
-
 void changeAndCount(int n) {
-    char temp, change_dir;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < n - 1; j++) {
             change(i, j, i, j + 1);
-            change_dir = 'w';
-            afterChangeMax(change_dir, i, j, n);
+            widthSearch(i, n);
+            heightSearch(j, n);
+            heightSearch(j + 1, n);
             change(i, j, i, j + 1);
         } 
     }
     for (int j = 0; j < n; j++) {
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 1; i++) {
             change(i, j, i + 1, j);
-            change_dir = 'h';
-            afterChangeMax(change_dir, i, j, n);
+            heightSearch(j, n);
+            widthSearch(i, n);
+            widthSearch(i + 1, n);
             change(i, j, i + 1, j);
         }
     }
