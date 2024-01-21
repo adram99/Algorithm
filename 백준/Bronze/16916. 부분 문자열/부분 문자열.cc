@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-vector<int> pi;
+vector<int> pi;   // 일치하는 접두사, 접미사 개수
 
 void checkPi(string s) {
     int pi_size = s.size();
@@ -14,7 +14,7 @@ void checkPi(string s) {
     }
 }
 
-int kmp(string s, string p) {
+int kmp(string s, string p) {   // KMP 알고리즘 : 문자열 탐색 알고리즘
     int res = 0;
     int j = 0;
     for (int i = 0; i < s.size(); i++) {
