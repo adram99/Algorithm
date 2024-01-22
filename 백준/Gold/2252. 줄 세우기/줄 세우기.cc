@@ -6,11 +6,11 @@ using namespace std;
 #define MAX 32001
 
 vector<int> graph[MAX];
-int indegree[MAX];
+int indegree[MAX];     // 자기로 들어오는 간선 수
 int res[MAX];
 
 void lineUp(int n) {
-    queue<int> zero;
+    queue<int> zero;   // 들어오는 간선이 0인 노드
 
     for (int i = 1; i <= n; i++) {
         if (indegree[i] == 0) zero.push(i);
