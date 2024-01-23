@@ -10,7 +10,7 @@ void change(int y1, int x1, int y2, int x2) {
     board[y2][x2] = temp;
 }
 
-void widthSearch(int boardY, int n) { 
+void widthSearch(int boardY, int n) {  // 가로로 연결된 최대 사탕 탐색
     if (max_count == n) return;
     int count = 1;
     for (int i = 0; i < n - 1; i++) {
@@ -22,7 +22,7 @@ void widthSearch(int boardY, int n) {
     }
 }
 
-void heightSearch(int boardX, int n) {
+void heightSearch(int boardX, int n) { // 세로로 연결된 최대 사탕 탐색
     if (max_count == n) return;
     int count = 1;
     for (int i = 0; i < n - 1; i++) {
@@ -33,15 +33,15 @@ void heightSearch(int boardX, int n) {
         else count = 1; 
     }
 }
-
-void firstMax(int n) {
+  
+void firstMax(int n) {                 // 초기 상태에서 최대 연결된 사탕 탐색
     for (int i = 0; i < n; i++) {
         widthSearch(i, n);
         heightSearch(i, n);
     }
 }
 
-void changeAndCount(int n) {
+void changeAndCount(int n) {           // 바뀐 뒤 최대 연결된 사탕 탐색
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n - 1; j++) {
             change(i, j, i, j + 1);
