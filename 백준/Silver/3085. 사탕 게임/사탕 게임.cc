@@ -44,20 +44,20 @@ void firstMax(int n) {                 // 초기 상태에서 최대 연결된 �
 void changeAndCount(int n) {           // 바뀐 뒤 최대 연결된 사탕 탐색
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n - 1; j++) {
-            change(i, j, i, j + 1);
-            widthSearch(i, n);
+            change(i, j, i, j + 1);       // 가로로 교환 (바꾼 사탕 두개가 포함된 세로줄 2줄, 가로줄 1줄만 확인)
+            widthSearch(i, n); 
             heightSearch(j, n);
             heightSearch(j + 1, n);
-            change(i, j, i, j + 1);
+            change(i, j, i, j + 1);       // 원위치
         } 
     }
     for (int j = 0; j < n; j++) {
         for (int i = 0; i < n - 1; i++) {
-            change(i, j, i + 1, j);
+            change(i, j, i + 1, j);       // 세로로 교환 (바꾼 사탕 두개가 포함된 가로줄 2줄, 세로줄 1줄만 확인)
             heightSearch(j, n);
             widthSearch(i, n);
             widthSearch(i + 1, n);
-            change(i, j, i + 1, j);
+            change(i, j, i + 1, j);       // 원위치
         }
     }
 }
