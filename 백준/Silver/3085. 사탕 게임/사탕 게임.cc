@@ -4,14 +4,14 @@ using namespace std;
 char board[50][50];
 int max_count = 0;
 
-void change(int y1, int x1, int y2, int x2) {
+void change(int y1, int x1, int y2, int x2) {  // 사탕 교환
     int temp = board[y1][x1];
     board[y1][x1] = board[y2][x2];
     board[y2][x2] = temp;
 }
 
 void widthSearch(int boardY, int n) {  // 가로로 연결된 최대 사탕 탐색
-    if (max_count == n) return;
+    if (max_count == n) return;        // 최대 사탕 개수가 n과 같으면 더 진행해도 n이 최대
     int count = 1;
     for (int i = 0; i < n - 1; i++) {
         if (board[boardY][i] == board[boardY][i + 1]) {
@@ -75,7 +75,7 @@ int main() {
         }
     }
 
-    firstMax(N);
+    firstMax(N);       // 교환하지 않은 원래 상태에서 최대값이 나올 수 있음
     changeAndCount(N);
     cout << max_count;
 
