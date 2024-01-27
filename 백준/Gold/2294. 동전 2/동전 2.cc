@@ -9,7 +9,7 @@ int main() {
     int n, k, coin;
     cin >> n >> k;
     dp[0] = 0;      // 0원을 만들기 위한 최소 동전 개수는 0개
-    for (int i = 1; i <= k; i++) dp[i] = 10001;  // 최소값 저장을 위해 초기값은 최대값
+    for (int i = 1; i <= k; i++) dp[i] = 10001;  // 최솟값 저장을 위해 초기값은 최댓값
     for (int i = 0; i < n; i++) {
         cin >> coin;
         for (int j = coin; j <= k; j++) {
