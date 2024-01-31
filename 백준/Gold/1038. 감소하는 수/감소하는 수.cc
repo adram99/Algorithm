@@ -4,8 +4,8 @@ using namespace std;
 long long dec_num[1000001];
 
 long long decreaseNum(int n) {
-    if (n <= 10) return n;
-    if (n > 1022) return -1;
+    if (n <= 10) return n;      // 한자리 수와 10은 자기 자신이 곧 n번째 수  
+    if (n > 1022) return -1;    // 계산 결과 1022 이상은 존재X (9876543210을 초과하는 수 중에서는 존재X)
 
     int index = 0;
     for (int i = 0; i < 10; i++) {
