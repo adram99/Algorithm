@@ -12,7 +12,7 @@ void dfs(int y, int x, char team) {
     cnt++;
     visited[y][x] = 1;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) { // i == 0 : 위로, 1 : 아래로, 2 : 왼쪽으로, 3 : 오른쪽으로
         int next_x = x + nx[i];
         int next_y = y + ny[i];
         if (next_x < 0 || next_x >= N || next_y < 0 || next_y >= M) continue;
@@ -31,7 +31,7 @@ int main() {
     for (int i = 0; i < M; i++)
     {
         string str;
-        cin >> str;
+        cin >> str; // 문자열로 받아서 한글자씩 저장
         for (int j = 0; j < N; j++)
         {
             field[i][j] = str[j];
