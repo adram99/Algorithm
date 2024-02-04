@@ -3,9 +3,9 @@
 using namespace std;
 
 int map[1001][1001];
-int visited[1001];
+int visited[1001];   // 탐색 여부 확인
 
-void DFS(int n, int v) {
+void DFS(int n, int v) {  // 재귀 이용한 깊이 우선 탐색
     visited[v] = 1;
     cout << v << " ";
 
@@ -16,7 +16,7 @@ void DFS(int n, int v) {
     }
 }
 
-void BFS(int n, int v) {
+void BFS(int n, int v) {  // 큐 이용한 너비 우선 탐색
     visited[v] = 1;
     cout << v << " ";
     queue<int> q;
@@ -44,7 +44,7 @@ int main() {
     int N, M, V;
     cin >> N >> M >> V;
 
-    for (int i = 0; i < M; i++) {
+    for (int i = 0; i < M; i++) {  // 그래프 생성
         int a, b;
         cin >> a >> b;
         map[a][b] = 1;
