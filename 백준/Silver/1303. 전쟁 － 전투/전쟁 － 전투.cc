@@ -15,7 +15,7 @@ void dfs(int y, int x, char team) {
     for (int i = 0; i < 4; i++) { // i == 0 : 위로, 1 : 아래로, 2 : 왼쪽으로, 3 : 오른쪽으로
         int next_x = x + nx[i];
         int next_y = y + ny[i];
-        if (next_x < 0 || next_x >= N || next_y < 0 || next_y >= M) continue;
+        if (next_x < 0 || next_x >= N || next_y < 0 || next_y >= M) continue;  // 범위를 벗어난 곳은 탐색 X
         if (field[next_y][next_x] == team && visited[next_y][next_x] != 1) dfs(next_y, next_x, team);
     }
 }
@@ -41,11 +41,11 @@ int main() {
         for (int j = 0; j < N; j++) {
             if (field[i][j] != 0 && visited[i][j] == 0) {
                 cnt = 0;
-                if (field[i][j] == 'B') {
-                    dfs(i, j, 'B');
+                if (field[i][j] == 'B') {                 // B팀 탐색
+                    dfs(i, j, 'B');    
                     sum[0] += cnt * cnt;
                 }
-                else if (field[i][j] == 'W') {
+                else if (field[i][j] == 'W') {            // W팀 탐색
                     dfs(i, j, 'W');
                     sum[1] += cnt * cnt;
                 }
