@@ -16,8 +16,8 @@ void dfs(int y, int x) {
         int next_x = x + nx[i];
         int next_y = y + ny[i];
 
-        if (next_x < 0 || next_x >= M || next_y < 0 || next_y >= N) continue;
-        else if (map[next_y][next_x] == 1 && visited[next_y][next_x] != 1) dfs(next_y, next_x);
+        if (next_x < 0 || next_x >= M || next_y < 0 || next_y >= N) continue;  // 범위를 벗어난 탐색은 스킵
+        else if (map[next_y][next_x] == 1 && visited[next_y][next_x] != 1) dfs(next_y, next_x);  // 연결된 1값을 탐색
     }
 }
 
@@ -31,7 +31,7 @@ int main() {
     cin >> N >> M >> K;
     for (int i = 0; i < K; i++) {
         cin >> x >> y;
-        map[x-1][y-1] = 1;
+        map[x-1][y-1] = 1;        // map[0][0]을 좌표 (1,1)로 간주. 답을 구하는 것에는 영향 X
     }
     /*
     for (int i = 0; i < N; i++) {
@@ -46,7 +46,7 @@ int main() {
             if (map[i][j] == 1 && visited[i][j] == 0) {
                 cnt = 0;
                 dfs(i, j);
-                if (cnt > max) max = cnt;
+                if (cnt > max) max = cnt;               // 가장 큰 탐색 값만 확인
             }
         }
     }
