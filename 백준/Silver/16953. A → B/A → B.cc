@@ -13,7 +13,7 @@ int main() {
     cin >> A >> B;
 
     while (1) {
-        if (B == A) {           // 답이 나오면 횟수 + 1 출력
+        if (B == A) {           // 답이 나오면 횟수+1 출력
             cout << count + 1;
             break;
         }
