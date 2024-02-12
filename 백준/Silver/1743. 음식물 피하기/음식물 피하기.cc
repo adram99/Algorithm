@@ -17,7 +17,7 @@ void dfs(int y, int x) {
         int next_y = y + ny[i];
 
         if (next_x < 0 || next_x >= M || next_y < 0 || next_y >= N) continue;  // 범위를 벗어난 탐색은 스킵
-        else if (map[next_y][next_x] == 1 && visited[next_y][next_x] != 1) dfs(next_y, next_x);  // 연결된 1값을 탐색
+        else if (map[next_y][next_x] == 1 && visited[next_y][next_x] != 1) dfs(next_y, next_x);  // 연결된 1값(음식물 위치)을 탐색
     }
 }
 
