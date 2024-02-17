@@ -29,7 +29,7 @@ int bfs(int y, int x) {
         int cur_cnt = q.front().cnt;
         q.pop();
 
-        if (map[cur_y][cur_x] == 1) return cur_cnt;  // 탐색중 처음 1(상어)이 발견되면 최소 거리(안전 거리)
+        if (map[cur_y][cur_x] == 1) return cur_cnt;  // 탐색 중 처음 1(상어)이 발견되면 최소 거리(안전 거리)
 
         for (int i = 0; i < 8; i++) {
             int next_y = cur_y + ny[i];
@@ -61,7 +61,7 @@ int main() {
         for (int j = 0; j < M; j++) {
             if (map[i][j] == 0) {
                 int ans = bfs(i, j);
-                if (max_ans < ans) max_ans = ans;  // 탐색한 최소거리 중 최대만 저장
+                if (max_ans < ans) max_ans = ans;  // 탐색한 최소 거리 중 최대만 저장
             }
         }
     }
