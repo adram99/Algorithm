@@ -20,13 +20,13 @@ void bfs(int x1, int y1, int x2, int y2) {
         q.pop();
 
         for (int i = 0; i < 4; i++) {
-            for(int j = 1; j <= K; j++) {
+            for(int j = 1; j <= K; j++) {       // 방향별로 1~K칸 탐색하며 cnt+1 기록
                 int next_y = cur_y + ny[i] * j;
                 int next_x = cur_x + nx[i] * j;
-                if (next_y < 0 || next_y >= M || next_x < 0 || next_x >= N) break;
-                if (gym[next_x][next_y] == '#' || visited[next_x][next_y] < cnt + 1) break;
-                if (visited[next_x][next_y] == cnt + 1) continue;
-                if (visited[next_x][next_y] == 987654321) {
+                if (next_y < 0 || next_y >= M || next_x < 0 || next_x >= N) break;          // 범위 넘어가면 스킵
+                if (gym[next_x][next_y] == '#' || visited[next_x][next_y] < cnt + 1) break; // #(벽)이거나 이미 기록된 값이 더 작으면 다른 방향 탐색
+                if (visited[next_x][next_y] == cnt + 1) continue;                           // 이미 기록된 값이 같으면 이어서 탐색
+                if (visited[next_x][next_y] == 987654321) {  // 첫 방문
                     visited[next_x][next_y] = cnt + 1;
                     if (next_x == x2 && next_y == y2) return;
                     q.push(make_pair(next_x, next_y));
@@ -54,9 +54,9 @@ int main() {
     }
     cin >> x1 >> y1 >> x2 >> y2;
 
-    bfs(x1-1, y1-1, x2-1, y2-1);
+    bfs(x1-1, y1-1, x2-1, y2-1);  // 배열은 0부터 계산하므로 각각 -1
 
-    if (visited[x2-1][y2-1] == 987654321) cout << -1;
+    if (visited[x2-1][y2-1] == 987654321) cout << -1;  // 도달 못했으면 -1
     else cout << visited[x2-1][y2-1];
 
     return 0;
