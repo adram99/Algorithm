@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-int dp[1500001];
+int dp[1500001];  // ex) dp[3]은 3일까지 얻을 수 있는 최대 이익
 
 int main() {
     ios::sync_with_stdio(0);
@@ -11,7 +11,7 @@ int main() {
 
     int N;
     cin >> N;
-    int days, profit, res = 0;
+    int days, profit, res = 0;   // 걸리는 시간, 이익, 결괏값(최대 이익)
     int cur_max = 0;
     for (int i = 0; i < N; i++) {
         cin >> days >> profit;
