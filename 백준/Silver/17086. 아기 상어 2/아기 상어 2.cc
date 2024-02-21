@@ -19,7 +19,6 @@ struct Info {
 int bfs(int y, int x) {
     memset(visited, 0, sizeof(visited));
     queue<Info> q;
-    int Cnt = 0;
     visited[y][x] = 1;
     q.push({ y, x, 0 });
 
