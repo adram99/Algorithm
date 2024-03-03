@@ -20,11 +20,11 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int com, link;
+    int coms, links;
     int a, b;
 
-    cin >> com >> link;
-    for (int i = 0; i < link; i++) {
+    cin >> coms >> links;
+    for (int i = 0; i < links; i++) {
         cin >> a >> b;
         net[a].push_back(b);
         net[b].push_back(a);
