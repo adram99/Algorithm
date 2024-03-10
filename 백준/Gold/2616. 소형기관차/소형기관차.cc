@@ -2,8 +2,8 @@
 #include <algorithm>
 using namespace std;
 
-int dp[4][50001];
-int sum[50001];
+int dp[4][50001]; 
+int sum[50001];   // ex) sum[i]는 i번째 차량까지의 손님의 합
 
 void DP(int t, int m) {
     for (int i = 1; i <= 3; i++) {
