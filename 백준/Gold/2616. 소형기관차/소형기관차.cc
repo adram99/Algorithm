@@ -2,8 +2,8 @@
 #include <algorithm>
 using namespace std;
 
-int dp[4][50001]; 
-int sum[50001];   // ex) sum[i]는 i번째 차량까지의 손님의 합
+int dp[4][50001]; // ex) dp[i][j]는 i번째 소형 차량이 j번째 객차까지 고려했을때 최대 승객의 수를 의미
+int sum[50001];   // ex) sum[i]는 i번째 차량까지의 손님의 합을 의미
 
 void DP(int t, int m) {
     for (int i = 1; i <= 3; i++) {
