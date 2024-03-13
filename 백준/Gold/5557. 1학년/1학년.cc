@@ -10,7 +10,7 @@ int main() {
 
     int N, num;
     cin >> N >> num;
-    dp[0][num] = 1;
+    dp[0][num] = 1;   // 0번째는 첫 수로 시작하고 별다른 계산X
     for (int i = 1; i < N - 1; i++) {
         cin >> num;
         for (int j = 0; j <= 20; j++) {
