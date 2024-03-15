@@ -13,7 +13,7 @@ int atack(int s, int c, int v)
     if (dp[s][c][v] != -1) return dp[s][c][v];   // 이미 방문했다면 값 반환
 
     dp[s][c][v] = 987654321;  // 처음이라면 제일 큰 값 넣고 비교
-    for(int i = 0; i < 6; i++)
+    for(int i = 0; i < 6; i++) // 여섯가지 경우 탐색
         dp[s][c][v] = min(dp[s][c][v], atack(max(0, s - myu[i][0]), max(0, c - myu[i][1]), max(0, v - myu[i][2])) + 1);
 
     return dp[s][c][v];
