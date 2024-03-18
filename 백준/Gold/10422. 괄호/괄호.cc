@@ -11,7 +11,7 @@ long long recur(int len) {
 
     for (int i = 2; i <= len; i += 2)
     {
-        dp[len] += (recur(i - 2) * recur(len - i));
+        dp[len] += (recur(i - 2) * recur(len - i));  // 처음 시작하는 괄호부터 해당 범위의 마지막 괄호를 기준으로 앞과 뒤를 나누어 재귀
         dp[len] %= 1000000007;
     }
 
