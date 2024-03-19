@@ -22,7 +22,7 @@ int main() {
     cin >> train;
     for (int i = 1; i <= train; i++) {
         cin >> people;
-        sum[i] = sum[i - 1] + people;
+        sum[i] = sum[i - 1] + people;    // 입력 받으면서 누적합 기록
     }
     cin >> mini;
 
