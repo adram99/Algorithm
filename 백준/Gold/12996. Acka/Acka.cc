@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+long long dp[51][51][51][51];
+int mod = 1000000007;
+
+long long calculate(int s, int a, int b, int c) {
+    if (s == 0) {
+        if (a == 0 && b == 0 && c == 0) return 1;
+        else return 0;
+    }
+
+    long long result = dp[s][a][b][c];
+    if (result != -1) return result;
+    result = 0;
+
+    result += calculate(s - 1, a - 1, b, c);
+    result += calculate(s - 1, a, b - 1, c);
+    result += calculate(s - 1, a, b, c - 1);
+    result += calculate(s - 1, a - 1, b - 1, c);
+    result += calculate(s - 1, a - 1, b, c - 1);
+    result += calculate(s - 1, a, b - 1, c - 1);
+    result += calculate(s - 1, a - 1, b - 1, c - 1);
+
+    dp[s][a][b][c] = result % mod;
+
+    return result % mod;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int s, a, b, c;
+    cin >> s >> a >> b >> c;
+    if (a + b + c < s || a > s || b > s || c > s) cout << 0;
+    else {
+        memset(dp, -1, sizeof(dp));
+        cout << calculate(s, a, b, c);
+    }
+
+    return 0;
+}
