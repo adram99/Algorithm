@@ -6,8 +6,8 @@ long long dp[51][51][51][51];
 int mod = 1000000007;
 
 long long calculate(int s, int a, int b, int c) {
-    if (s == 0) {
-        if (a == 0 && b == 0 && c == 0) return 1;
+    if (s == 0) {  // 곡 분배를 다 했을 때
+        if (a == 0 && b == 0 && c == 0) return 1; // a, b, c가 모두 분배됨
         else return 0;
     }
 
@@ -15,6 +15,7 @@ long long calculate(int s, int a, int b, int c) {
     if (result != -1) return result;
     result = 0;
 
+    // 7가지 경우가 전부
     result += calculate(s - 1, a - 1, b, c);
     result += calculate(s - 1, a, b - 1, c);
     result += calculate(s - 1, a, b, c - 1);
@@ -23,7 +24,7 @@ long long calculate(int s, int a, int b, int c) {
     result += calculate(s - 1, a, b - 1, c - 1);
     result += calculate(s - 1, a - 1, b - 1, c - 1);
 
-    dp[s][a][b][c] = result % mod;
+    dp[s][a][b][c] = result % mod; // 메모이제이션
 
     return result % mod;
 }
