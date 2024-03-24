@@ -36,9 +36,9 @@ int main() {
 
     int s, a, b, c;
     cin >> s >> a >> b >> c;
-    if (a + b + c < s || a > s || b > s || c > s) cout << 0;
+    if (a + b + c < s || a > s || b > s || c > s) cout << 0;  // 곡 분배를 다 못하거나 곡이 모자라는 경우
     else {
-        memset(dp, -1, sizeof(dp));
+        memset(dp, -1, sizeof(dp));                           // dp 계산 중 0이 나올 수 있음을 감안하여 초가값을 -1로 초기화
         cout << calculate(s, a, b, c);
     }
 
