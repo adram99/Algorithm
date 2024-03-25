@@ -1,75 +1,65 @@
 #include <iostream>
-#include <algorithm>
 #include <cstring>
-#include <string>
-#define MAX 51
 using namespace std;
- 
-string str;
-int dp[MAX][MAX][MAX][3][3];
-int cnt[3];
-int N;
- 
-int dfs(int a, int b, int c, int pre1, int pre2) {
-    if (a + b + c == N) return 1;
-    int &ret = dp[a][b][c][pre1][pre2];
-    if (ret != -1) return ret;
-    ret = 0;
- 
-    if (a < cnt[0]) {
-        ret = dfs(a + 1, b, c, 0, pre1);
-        if (ret == 1) {
-            cout << 'A';
-            return ret;
+
+int len;
+int dp[51][51][51][3][3];
+int abc[3];
+
+int calculate(int a, int b, int c, int before, int bbefore) {
+    if (a + b + c == len) return 1;
+    int &val = dp[a][b][c][before][bbefore];
+    if (val != -1) return val;
+    val = 0;
+
+    if (a < abc[0]) {
+        val = calculate(a + 1, b, c, 0, before);
+        if (val == 1) {
+            cout << "A";
+            return val;
         }
     }
- 
-    if (b < cnt[1]) {
-        if (pre1 != 1) {
-            ret = dfs(a, b + 1, c, 1, pre1);
-            if (ret == 1) {
-                cout << 'B';
-                return ret;
+    if (b < abc[1]) {
+        if(before != 1) {
+            val = calculate(a, b + 1, c, 1, before);
+            if (val == 1) {
+                cout << "B";
+                return val;
             }
         }
     }
- 
-    if (c < cnt[2]) {
-        if (pre1 != 2 && pre2 != 2) {
-            ret = dfs(a, b, c + 1, 2, pre1);
-            if (ret == 1) {
-                cout << 'C';
-                return ret;
+    if (c < abc[2]) {
+        if(before != 2 && bbefore != 2) {
+            val = calculate(a, b, c + 1, 2, before);
+            if (val == 1) {
+                cout << "C";
+                return val;
             }
         }
     }
- 
-    return ret;
+
+    return val;
 }
- 
-void func() {
-    memset(dp, -1, sizeof(dp));
-    if (!dfs(0, 0, 0, 0, 0)) cout << "-1\n";
-}
- 
-void init() {
-    N = str.size();
-    for (int i = 0; i < N; i++) {
-        cnt[str[i] - 'A']++;
-    }
-}
- 
-void input() {
-    cin >> str;
-    init();
-}
- 
+
 int main() {
-    cin.tie(NULL); cout.tie(NULL);
     ios::sync_with_stdio(false);
- 
-    input();
-    func();
- 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    string input;
+    cin >> input;
+    len = input.size();
+    for (int i = 0; i < len; i++) {
+        if (input[i] == 'A') abc[0]++;
+        else if (input[i] == 'B') abc[1]++;
+        else if (input[i] == 'C') abc[2]++;
+    }
+    if (abc[1] * 2 - 1 > len) cout << -1;
+    else if (abc[2] * 3 - 2 > len) cout << -1;
+    else {
+        memset(dp, -1, sizeof(dp));
+        if(!calculate(0, 0, 0, 0, 0)) cout << -1;
+    }
+
     return 0;
 }
