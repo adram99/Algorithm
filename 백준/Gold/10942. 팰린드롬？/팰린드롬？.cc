@@ -1,14 +1,14 @@
 #include <iostream>
 using namespace std;
 
-int arr[2001];
-int palindrom[2001][2001];
+int arr[2001];              // 입력받은 문자열
+int palindrom[2001][2001];  // palindrom[i][j] = i부터 j까지 팰린드롬 여부
 
 void check(int n) {
-    for (int i = 1; i <= n; i++) palindrom[i][i] = 1;
+    for (int i = 1; i <= n; i++) palindrom[i][i] = 1;  // 한자리는 무조건 팰린드롬
 
     for (int i = 1; i <= n - 1; i++) {
-        if (arr[i] == arr[i + 1]) palindrom[i][i + 1] = 1;
+        if (arr[i] == arr[i + 1]) palindrom[i][i + 1] = 1;  // 연속된 두자리가 같으면 미리 체크
     }
 
     for (int i = n - 1; i >= 1; i--) {
