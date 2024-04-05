@@ -18,13 +18,13 @@ void dfs(int y1, int x1, int y2, int x2, int cnt) {
     if (cnt > 10) return;
     if (cnt >= min_cnt) return;
 
-    if (out_check(y1, x1) && out_check(y2, x2)) return;
+    if (out_check(y1, x1) && out_check(y2, x2)) return;   // 동전 두개가 다 나갔을 때
 
-    if (out_check(y1, x1) && !out_check(y2, x2)) {
+    if (out_check(y1, x1) && !out_check(y2, x2)) {   // 동전 하나만 나갔을 때
         min_cnt = min(min_cnt, cnt);
         return;
     }
-    if (!out_check(y1, x1) && out_check(y2, x2)) {
+    if (!out_check(y1, x1) && out_check(y2, x2)) {   // 동전 하나만 나갔을 때
         min_cnt = min(min_cnt, cnt);
         return;
     }
@@ -35,11 +35,11 @@ void dfs(int y1, int x1, int y2, int x2, int cnt) {
         int ny2 = y2 + next_y[i];
         int nx2 = x2 + next_x[i];
 
-        if (board[ny1][nx1] == '#') {
+        if (board[ny1][nx1] == '#') {  // 동전 1의 다음 경로가 벽이면 이동 X
             ny1 = y1;
             nx1 = x1;
         }
-        if (board[ny2][nx2] == '#') {
+        if (board[ny2][nx2] == '#') {  // 동전 2의 다음 경로가 벽이면 이동 X
             ny2 = y2;
             nx2 = x2;
         }
