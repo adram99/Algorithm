@@ -9,14 +9,14 @@ int main() {
 
     while (testcase--) {
         int N, K, W;
-        int build_time[1001];
+        int build_time[1001];  // 건설시간
         cin >> N >> K;
         for (int i = 1; i <= N; i++) cin >> build_time[i];
 
-        vector<int> seq[1001];
+        vector<int> seq[1001];  // 건설 순서
         queue<int> q;
         int inDeg[1001] = { 0, };
-        int max_time[1001];
+        int max_time[1001];  
 
         int x, y;
         for (int i = 0; i < K; i++) {
