@@ -4,7 +4,7 @@
 using namespace std;
 
 int N;
-int dp[10001][2];
+int dp[10001][2];   // dp[n][1] : n마을이 우수마을일 때 최댓값, dp[n][0] : 우수마을이 아닐 때 최댓값
 int people[10001];
 int visited[10001];
 vector<int> road[10001];
@@ -18,8 +18,8 @@ void calculate(int town) {
     for (int next : road[town]) {
         if (!visited[next]) {
             calculate(next);
-            dp[town][0] += max(dp[next][0], dp[next][1]);
-            dp[town][1] += dp[next][0];
+            dp[town][0] += max(dp[next][0], dp[next][1]);  // 우수마을이 아니면 다음 마을이 우수마을 이거나 우수마을이 아님
+            dp[town][1] += dp[next][0];                    // 우수마을이라면 다음마을은 반드시 우수마을이 아님
         }
     }
 }
