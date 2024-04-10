@@ -5,8 +5,8 @@ using namespace std;
 void lcd(int s, string num) {
     for (int i = 1; i <= (s * 2 + 3); i++) {
         for (int j = 0; j < num.size(); j++) {
-            int now = num[j] - 48;
-            if (i == 1) {
+            int now = num[j] - 48;     // 현재 숫자
+            if (i == 1) {   // 맨 위 가로
                 cout << " ";
                 if (now == 0 || now == 2 || now == 3 || now == 5 || now == 6 || now == 7 || now == 8 || now == 9) {
                     for (int k = 0; k < s; k++) cout << "-";
@@ -32,7 +32,7 @@ void lcd(int s, string num) {
                 }
                 cout << " "; 
             }
-            else if (i == s + 2) {
+            else if (i == s + 2) {   // 중간 가로
                 cout << " ";
                 if (now == 2 || now == 3 || now == 4 || now == 5 || now == 6 || now == 8 || now == 9) {
                     for (int k = 0; k < s; k++) cout << "-";
@@ -58,7 +58,7 @@ void lcd(int s, string num) {
                 }
                 cout << " ";
             }
-            else if (i == s * 2 + 3) {
+            else if (i == s * 2 + 3) {   // 맨 아래 가로
                 cout << " ";
                 if (now == 0 || now == 2 || now == 3 || now == 5 || now == 6 || now == 8 || now == 9) {
                     for (int k = 0; k < s; k++) cout << "-";
