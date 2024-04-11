@@ -88,7 +88,7 @@ void binaryCode() {
             bit_4 = 1;
         }
     }
-    cout << bitset<3>(rD);
+    cout << bitset<3>(rD);  // rD를 3자리 2진수로 변환
     cout << bitset<3>(rA);
     if (bit_4 == 0) {
         cout << bitset<3>(rB) << 0;
