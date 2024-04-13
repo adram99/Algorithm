@@ -13,7 +13,7 @@ int checkNum(int x) {
             return 1;
         }
     }
-    //세로 위에서 2개 확인(2, 3, 7 걸러냄)
+    //세로 왼쪽 위에서 2개 확인(2, 3, 7 걸러냄)
     for (int i = 0; i < 2; i++) {
         if (signal[i][x] != '#') {
             if (signal[i + 1][x] != '#') return 7;
@@ -21,7 +21,7 @@ int checkNum(int x) {
             else return 2;
         }
     }
-    //세로 아래서 2번째 확인(5, 9 걸러냄)
+    //세로 오른쪽 아래서 2번째 확인(5, 9 걸러냄)
     if (signal[3][x] != '#') {
         if (signal[1][x + 2] != '#') return 5;
         else return 9;
@@ -54,7 +54,7 @@ int main() {
 
     int N;
     cin >> N;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {  // 처음부터 5줄로 나눠서 입력
         for (int j = 0; j < N / 5; j++) cin >> signal[i][j];
     }
     printNum(N);
