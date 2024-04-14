@@ -5,7 +5,7 @@ int N;
 
 void findPrime(int num, int cnt) {
     int p_check = 1;
-    for (int i = 2; i * i <= num; i++) {
+    for (int i = 2; i * i <= num; i++) {  // 소수 확인(에라토스테네스의 체)
         if (num % i == 0) {
             p_check = 0;
             return;
@@ -26,6 +26,7 @@ int main() {
 
     cin >> N;
 
+    // 첫번째 자리는 소수로 시작(2, 3, 5, 7)
     findPrime(2, 1);
     findPrime(3, 1);
     findPrime(5, 1);
