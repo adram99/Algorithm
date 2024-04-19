@@ -19,7 +19,7 @@ int depth(int y, int x) {  // 공중에 뜬 미네랄 얼마나 내릴지 확인
         if (cave[high - 1][x] == 'x' && link[high - 1][x] == 1) break;
         high--;
     }
-    h = min(h, y - high);
+    h = min(h, y - high);  // 공중에 뜬 미네랄이 바닥이나 밑 미네랄에 걸릴 때까지 내리는 높이
     for (int i = 0; i < 4; i++) {
         int ny = y + next_y[i];
         int nx = x + next_x[i];
@@ -32,7 +32,7 @@ int depth(int y, int x) {  // 공중에 뜬 미네랄 얼마나 내릴지 확인
     return 0;
 }
 
-int linkCheck(int y, int x) {
+int linkCheck(int y, int x) {  // 바닥과 연결된 미네랄 체크(그 외에는 공중에 뜬 미네랄) dfs
     link[y][x] = 1;
     for (int i = 0; i < 4; i++) {
         int ny = y + next_y[i];
@@ -49,7 +49,7 @@ int linkCheck(int y, int x) {
 void drop() {
     for (int j = 0; j < C; j++) {
         if (cave[0][j] == 'x' && link[0][j] != 1) {
-            linkCheck(0, j);  // 바닥과 연결된 미네랄 체크(그 외에는 공중에 뜬 미네랄)
+            linkCheck(0, j);
         }
     }
     int first = 0;
@@ -89,7 +89,7 @@ int main() {
     int turn = 1;
     for (int i = 0; i < N; i++) {
         cin >> H;
-        if (turn == 1) {
+        if (turn == 1) {  // 왼편에서 막대기 던짐
             for (int j = 0; j < C; j++) {
                 if (cave[H - 1][j] == 'x') {
                     cave[H - 1][j] = '.';
@@ -97,9 +97,9 @@ int main() {
                     break;
                 }
             }
-            turn = 2;
+            turn = 2;  // 다음은 오른편 순서
         }
-        else if (turn == 2) {
+        else if (turn == 2) {  // 오른편에서 막대기 던짐
             for (int j = C - 1; j >= 0; j--) {
                 if (cave[H - 1][j] == 'x') {
                     cave[H - 1][j] = '.';
@@ -107,7 +107,7 @@ int main() {
                     break;
                 }
             }
-            turn = 1;
+            turn = 1;  // 다음은 왼편 순서
         }
     }
 
