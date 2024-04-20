@@ -13,21 +13,21 @@ void tracking() {
     int nowX = 0, nowY = 0;
     xy.push_back(make_pair(nowX, nowY));
     for (int i = 0; i < input.size(); i++) {
-        if (input[i] == 'F') {
+        if (input[i] == 'F') {  // 전진
             nowX += nextX[dir];
             nowY += nextY[dir];
             xy.push_back(make_pair(nowX, nowY));
         }
-        else if (input[i] == 'B') {
+        else if (input[i] == 'B') {  // 후진
             nowX -= nextX[dir];
             nowY -= nextY[dir];
             xy.push_back(make_pair(nowX, nowY));
         }
-        else if (input[i] == 'L') {
+        else if (input[i] == 'L') {  // 왼쪽 회전
             if (dir == 0) dir = 3;
             else dir--;
         }
-        else if (input[i] == 'R') {
+        else if (input[i] == 'R') {  // 오른쪽 회전
             if (dir == 3) dir = 0;
             else dir++;
         }
@@ -44,7 +44,7 @@ void calculate() {
         max_y = max(max_y, xy.back().second);
         xy.pop_back();
     }
-    cout << (max_x - min_x) * (max_y - min_y) << "\n";
+    cout << (max_x - min_x) * (max_y - min_y) << "\n";  //  딱맞는 직사각형
 }
 
 int main() {
