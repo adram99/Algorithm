@@ -7,7 +7,7 @@ char map[12][6] = { 0 };
 int next_x[4] = { 1, 0, -1, 0 };
 int next_y[4] = { 0, -1, 0, 1 };
 
-int puyoCheck() {
+int puyoCheck() {  // 4개 이상 연결된 뿌요 터뜨리기
     int is_pop = 0;
     int visited[12][6] = { 0 };
     vector<pair<int, int>> pop_puyo_vec;
@@ -57,7 +57,7 @@ int puyoCheck() {
     return is_pop;
 }
 
-void drop() {
+void drop() {  // 중력
     for (int col = 0; col < 6; col++) {
         int row_top = 11;
         for (int row = 11; row >= 0; row--) {
