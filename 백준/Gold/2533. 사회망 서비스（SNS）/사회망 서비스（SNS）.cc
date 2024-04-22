@@ -35,6 +35,6 @@ int main() {
     }
     calculate(1);
 
-    cout << min(dp[1][0], dp[1][1]);
+    cout << min(dp[1][0], dp[1][1]);  // 첫번째가 얼리어답터일 경우와 아닐경우의 dp값 중 작은 값
     return 0;
 }
