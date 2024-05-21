@@ -15,8 +15,8 @@ int main() {
     int index;
     for (int i = 0; i < input.size(); i++) {
         abc = input[i];
-        index = abc - 'A';
-        if (index < 32) check[index]++;
+        index = abc - 'A';  // A일 때 0
+        if (index < 32) check[index]++;  // 대문자 소문자 아스키코드 차이는 32
         else check[index - 32]++;
     }
 
